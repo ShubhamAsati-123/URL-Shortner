@@ -1,13 +1,27 @@
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Landing from "./pages/Landing";
+import NotFound from "./pages/NotFound";
+import Open_link from "./components/Open_link";
 
 const App = () => {
-  return (
-    <div className="bg-black min-h-screen flex justify-center items-center">
-      <div className="bg-blue-500 h-96 w-96">
-        <h1 className="text-5xl text-center">URL Shortner</h1>
-      </div>
-      
-    </div>
-  )
-}
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Landing />
+    },
+    {
+      path: "/:short",
+      element: <Open_link />
+    },
+    {
+      path: "*",
+      element: <NotFound />
+    },
 
-export default App
+  ])
+
+  return <RouterProvider router={router} />;
+
+};
+
+export default App;
